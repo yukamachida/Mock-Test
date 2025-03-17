@@ -30,7 +30,10 @@
 </head>
 
 <body>
-
+<div class="setting-form">
+    <h2>プロフィール設定</h2>
+    
+</div>
 
 </body>
 
