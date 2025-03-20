@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\RegisterRequest;
 class AuthController extends Controller
 {
 
@@ -22,30 +23,33 @@ class AuthController extends Controller
 
     public function index()
     {
-        dd;
+    
         return view('layouts.index');
     }
 
 
-    // public function login(request $request)
-    // {
-    //     $form = $request->all();
-    //     User::create($form);
-    //     return redirect('/mypage/profile');
+    public function login()
+    {
+        return view('auth.login');
+    }
 
-    // }
-
-    public function show_profile_setting()
+    public function showProfileSetting()
     {
         return view('auth.first_login');
     }
 
 
-    public function profile_setting(request $request)
+    public function profileSetting(RegisterRequest $request)
     {
         $form = $request->all();
         User::create($form);
 
         return redirect('mypage/profile');
+    }
+
+    public function updateProfile(request $request)
+    {
+        $form = $request->all();
+        
     }
 }
