@@ -4,8 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COACHTECH</title>
+    <title>新フリマ</title>
     @if (Auth::check())
+        <h1>
+            <a>
+                <image src="images/logo.svg" alt="COACHTECH">
+
+            </a>
+        </h1>
         <form action="/search" method="get" class="search-form">
             @csrf
             <input class="" type="text" value="なにをお探しですか?">
