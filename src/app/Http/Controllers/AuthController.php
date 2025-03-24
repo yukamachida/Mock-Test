@@ -5,32 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
 
-    public function register()
+    public function showRegisterForm()
     {
         return view('auth.register');
 
     }
-    // public function create(Request $request)
-    // {
-    //     $form = $request->all();
-    //     User::create($form); //createメソッドでテーブルにデータを挿入
-    //     return view('/');
-    // }
-
-
-    public function index()
-    {
     
-        return view('layouts.index');
-    }
-
-
-    public function login()
+    public function showlogin()
     {
         return view('auth.login');
+    }
+
+    public function login(LoginRequest $request)
+    {
+
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return back()->withErrors([
+                'email' => 'ログイン情報が登録されていません。',
+            ])->withInput(); //入力情報を保持
+        }
+        $request->session()->regenerate();
+        return redirect('/');
     }
 
     public function showProfileSetting()
@@ -39,10 +40,15 @@ class AuthController extends Controller
     }
 
 
-    public function profileSetting(RegisterRequest $request)
+    public function register(RegisterRequest $request)
     {
-        $form = $request->all();
-        User::create($form);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        Auth::login($user);
 
         return redirect('mypage/profile');
     }
@@ -50,6 +56,14 @@ class AuthController extends Controller
     public function updateProfile(request $request)
     {
         $form = $request->all();
-        
+
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate(); // セッションデータを削除
+        $request->session()->regenerateToken(); //CSRFトークンを再生成
+
+        return redirect('login');
     }
 }

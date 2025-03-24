@@ -35,7 +35,15 @@
 </head>
 
 <body>
-
+@foreach ($products as $product)
+    <div class="product-content">
+        <a href="/products/detail/{{$product->id}}" class="product-link"></a>
+        <img src="{{ asset($product->image) }}" alt="商品画像" class="img-content" />
+        <div class="detail-content">
+            <p>{{$product->name}}</p>
+        </div>
+    </div>
+@endforeach
 </body>
 
 </html>
