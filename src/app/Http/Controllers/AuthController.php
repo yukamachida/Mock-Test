@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FirstLoginRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
@@ -42,20 +43,28 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        Auth::login($user);
+        Auth::login($user); // 登録したユーザーをログイン状態にする
 
         return redirect('mypage/profile');
     }
 
-    public function updateProfile(request $request)
+    public function store(FirstLoginRequest $request)
     {
-        $form = $request->all();
+        $user = Auth::user(); // ログイン中のユーザーを取得
+
+        // ユーザー情報を更新
+        $user->update([
+            'name' => $request->name,
+            'postal_code' => $request->postal_code,
+            'address' => $request->address,
+            'building' => $request->building,
+        ]);
+        return redirect('index');
 
     }
     public function logout(Request $request)

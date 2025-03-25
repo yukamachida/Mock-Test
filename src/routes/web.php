@@ -10,7 +10,7 @@ Route::post('register/', [AuthController::class, 'register']);
 Route::get('login/', [AuthController::class, 'showlogin']);
 Route::post('login/', [AuthController::class, 'login']);
 Route::get('/mypage/profile', [AuthController::class, 'showProfileSetting']);
-Route::post('firstlogin/', [AuthController::class, 'updateProfile']);
+Route::post('firstlogin/', [AuthController::class, 'store']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ProductController::class, 'index']);

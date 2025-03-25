@@ -8,7 +8,7 @@
     <h1>
     <image src="images/logo.svg" alt="COACHTECH"></image>
     </h1>
-    <!-- @if (Auth::check()) -->
+    @if (Auth::check())
     <form action="/search" method="get" class="search-form">
         @csrf
         <input class="" type="text" value="なにをお探しですか?">
@@ -27,14 +27,14 @@
             </li>
 
         </ul>
-        <!-- @endif -->
+        @endif
     </nav>
 </head>
 
 <body>
     <div class="setting-form">
         <h2>プロフィール設定</h2>
-        <form="" action="/firstlogin" method="post">
+        <form="register-form__form" action="/firstlogin" method="post">
 
             <a class="profile_link" href="/profile/photo">写真を選択する</a>
 
