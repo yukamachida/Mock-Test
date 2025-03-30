@@ -7,9 +7,8 @@
     <title>新フリマ</title>
     @if (Auth::check())
         <h1>
-            <a>
-                <image src="images/logo.svg" alt="COACHTECH">
-
+            <a href="/">
+                <img src="images/logo.svg" alt="COACHTECH">
             </a>
         </h1>
         <form action="/search" method="get" class="search-form">
@@ -22,7 +21,7 @@
                 <li class="header-nav__item">
                     <form action="/logout" method="post">
                         @csrf
-                        <button class="header-nav__button">ログアウト</button>
+                        <button type="submit" class="header-nav__link">ログアウト</button>
                     </form>
                 </li>
                 <li class="header-nav__item">
@@ -35,15 +34,16 @@
 </head>
 
 <body>
-@foreach ($products as $product)
-    <div class="product-content">
-        <a href="/products/detail/{{$product->id}}" class="product-link"></a>
-        <img src="{{ asset($product->image) }}" alt="商品画像" class="img-content" />
-        <div class="detail-content">
-            <p>{{$product->name}}</p>
+    @foreach ($products as $product)
+        <div class="product-content">
+            <a href="/products/detail/{{$product->id}}" class="product-link">
+                <img src="{{ asset($product->image) }}" alt="商品画像" class="img-content" />
+                <div class="detail-content">
+                    <p>{{$product->name}}</p>
+                </div>
+            </a>
         </div>
-    </div>
-@endforeach
+    @endforeach
 </body>
 
 </html>

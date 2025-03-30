@@ -22,6 +22,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'postal_code',
+        'address',
+        'building',
     ];
 
     /**
@@ -47,4 +50,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product::class);
     }
+
+    
 }
