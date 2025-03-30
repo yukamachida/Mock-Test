@@ -11,6 +11,7 @@ Route::get('login/', [AuthController::class, 'showlogin']);
 Route::post('login/', [AuthController::class, 'login']);
 Route::get('/mypage/profile', [AuthController::class, 'showProfileSetting']);
 Route::post('firstlogin/', [AuthController::class, 'store']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ProductController::class, 'index']);

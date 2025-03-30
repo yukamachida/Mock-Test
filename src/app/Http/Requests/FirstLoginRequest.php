@@ -25,7 +25,7 @@ class FirstLoginRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'postal_code' => 'required|string|size:7', // 郵便番号は7桁
+            'postal_code' => 'required|digits:7', // 郵便番号は7桁
             'address' => 'required|string|max:255',
             'building' => 'nullable|string|max:255',
         ];
@@ -35,8 +35,10 @@ class FirstLoginRequest extends FormRequest
         return [
             'name.required' => 'ユーザー名を入力してください。',
             'postal_code.required' => '郵便番号を入力してください。',
-            'postal_code.size' => '郵便番号は7桁で入力してください。',
+            'postal_code.digits' => '郵便番号は7桁で入力してください。',
             'address.required' => '住所を入力してください。',
+            'address.max' => '住所は255文字以内で入力してください。',
+            'building.max' => '建物名は50文字以内で入力してください。',
         ];
     }
 }

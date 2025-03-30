@@ -31,6 +31,7 @@ class AuthController extends Controller
                 'email' => 'ログイン情報が登録されていません。',
             ])->withInput(); //入力情報を保持
         }
+       
         $request->session()->regenerate();
         return redirect('/');
     }
@@ -55,6 +56,7 @@ class AuthController extends Controller
 
     public function store(FirstLoginRequest $request)
     {
+       
         $user = Auth::user(); // ログイン中のユーザーを取得
 
         // ユーザー情報を更新
@@ -64,15 +66,15 @@ class AuthController extends Controller
             'address' => $request->address,
             'building' => $request->building,
         ]);
-        return redirect('index');
+        return redirect('/');
 
     }
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::logout(); //ユーザーをログアウト
         $request->session()->invalidate(); // セッションデータを削除
         $request->session()->regenerateToken(); //CSRFトークンを再生成
 
-        return redirect('login');
+        return redirect('/login');
     }
 }
