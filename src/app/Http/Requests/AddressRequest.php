@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FirstLoginRequest extends FormRequest
+class AddressRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class FirstLoginRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'postal_code' => 'required|regex:/^\d{3}-\d{4}$/', // 郵便番号は7桁
+            'postal_code' => 'required|regex:/^\d{3}-\d{4}$/',
             'address' => 'required|string',
             'building' => 'nullable|string',
         ];

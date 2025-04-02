@@ -17,7 +17,7 @@ class AuthController extends Controller
         return view('auth.register');
 
     }
-    
+
     public function showlogin()
     {
         return view('auth.login');
@@ -31,7 +31,7 @@ class AuthController extends Controller
                 'email' => 'ログイン情報が登録されていません。',
             ])->withInput(); //入力情報を保持
         }
-       
+
         $request->session()->regenerate();
         return redirect('/');
     }
@@ -54,9 +54,9 @@ class AuthController extends Controller
         return redirect('mypage/profile');
     }
 
-    public function store(FirstLoginRequest $request)
+    public function store(AddressRequest $request)
     {
-       
+
         $user = Auth::user(); // ログイン中のユーザーを取得
 
         // ユーザー情報を更新
@@ -77,4 +77,6 @@ class AuthController extends Controller
 
         return redirect('/login');
     }
+
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -12,6 +13,8 @@ Route::post('login/', [AuthController::class, 'login']);
 Route::get('/mypage/profile', [AuthController::class, 'showProfileSetting']);
 Route::post('firstlogin/', [AuthController::class, 'store']);
 Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/mypage/profile', [ProfileController::class, 'edit']);
+Route::post('/mypage/profile', [ProfileController::class, 'update']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
