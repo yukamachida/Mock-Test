@@ -44,7 +44,7 @@
             </div>
             <div class="register-form__group">
                 <label class="register-form__label" for="password_confirmation">パスワード確認用</label>
-                <input type="register-form__input" name="password_confirmation" id="password_confirmation">
+                <input class="register-form__input" type="password" name="password_confirmation" id="password_confirmation">
             </div>
 
             <input class="register-form__btn" type="submit" value="登録する">
