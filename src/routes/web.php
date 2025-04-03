@@ -10,11 +10,12 @@ Route::get('register/', [AuthController::class, 'showRegisterForm']);
 Route::post('register/', [AuthController::class, 'register']);
 Route::get('login/', [AuthController::class, 'showlogin']);
 Route::post('login/', [AuthController::class, 'login']);
-Route::get('/mypage/profile', [AuthController::class, 'showProfileSetting']);
-Route::post('firstlogin/', [AuthController::class, 'store']);
+Route::get('/firstlogin', [AuthController::class, 'showProfileSetting']);
+Route::post('/firstlogin', [AuthController::class, 'store']);
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/mypage/profile', [ProfileController::class, 'edit']);
 Route::post('/mypage/profile', [ProfileController::class, 'update']);
+Route::get('/mypage', [ProductController::class, 'showMypage']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
