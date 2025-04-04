@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\AddressRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
@@ -51,7 +52,7 @@ class AuthController extends Controller
         ]);
         Auth::login($user); // 登録したユーザーをログイン状態にする
 
-        return redirect('mypage/profile');
+        return redirect('/firstlogin');
     }
 
     public function store(AddressRequest $request)

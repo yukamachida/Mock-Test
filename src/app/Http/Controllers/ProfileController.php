@@ -10,15 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function edit(AddressRequest $request)
+    public function edit(Request $request)
     {
         $user = Auth::user();
-       
+
         return view('profile.edit', compact('user'));
-    } 
+    }
 
     public function update(AddressRequest $request)
     {
+        
         $user = Auth::user(); // ログイン中のユーザーを取得
 
         //データの更新
