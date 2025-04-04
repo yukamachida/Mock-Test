@@ -34,7 +34,7 @@
 <body>
     <div class="setting-form">
         <h2>プロフィール設定</h2>
-        <h3>初回ログイン後で消す</h3>
+        <h3>初回ログインです</h3>
         <form action="/firstlogin" method="post" class="register-form__form">
             @csrf
             <a class="profile_link" href="/profile/photo">写真を選択する</a>

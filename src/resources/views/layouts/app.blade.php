@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新フリマ</title>
     <h1>
-        <image src="/images/logo.svg" alt="COACHTECH"></image>
+        <a href="/">
+            <img src="/images/logo.svg" alt="COACHTECH">
+        </a>
     </h1>
     @if (Auth::check())
         <form action="/search" method="get" class="search-form">
