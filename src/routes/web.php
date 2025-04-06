@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -15,10 +15,10 @@ Route::post('/firstlogin', [AuthController::class, 'store']);
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/mypage/profile', [ProfileController::class, 'edit']);
 Route::post('/mypage/profile', [ProfileController::class, 'update']);
-Route::get('/mypage', [ProductController::class, 'showMypage']);
+Route::get('/mypage', [ItemController::class, 'showMypage']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/', [ItemController::class, 'index']);
 
 });
 
