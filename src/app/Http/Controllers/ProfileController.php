@@ -12,7 +12,7 @@ class ProfileController extends Controller
 {
     public function edit(Request $request)
     {
-        $user = Auth::user();
+        $user = Auth::user(); // ログイン中のユーザーを取得
 
         return view('profile.edit', compact('user'));
     }

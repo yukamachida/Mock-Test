@@ -1,6 +1,6 @@
 @extends('layouts/app')
 
-<body>
+@section('content')
     <div class="setting-form">
         <h2>プロフィール設定</h2>
         <form action="/mypage/profile" method="post" class="edit-form__form">
@@ -36,6 +36,4 @@
             <input class="edit-form__btn" type="submit" value="更新する">
         </form>
     </div>
-</body>
-
-</html>
+@endsection
