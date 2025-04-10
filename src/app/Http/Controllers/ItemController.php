@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
-use App\Models\Condition;    //ここ変更！
+use App\Models\Condition;    
 use App\Models\User;
 use App\Models\Like;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -23,20 +24,10 @@ class ItemController extends Controller
         return view('profile.show');
     }
 
-    public function store(Request $request)
+    public function detail($id)
     {
-        $user = Auth::User();
-        $productId = $request->input('product_id');
-
-        //既にいいねしているかチェック
-        $existingLike = Like::where('user_id', $user->id)->where('product_id', $productId)->first();
-
-        if (!$existingLike) {
-            Like::create([
-                'user_id' => $user->id,
-                'product_id' => $productId,
-            ]);
-        }
+        $product = Product::with(['condition', 'likes', 'comments.user'])->findOrFail($id);
+        dd($product);
+        return view('item.detail', compact('product'));
     }
-
 }
