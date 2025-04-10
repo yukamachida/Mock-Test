@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新フリマ</title>
-
-
-</head>
-
-<body>
+@section('content')
     <div class="register-form">
         <h2 class="register-form__heading content__heading">会員登録</h2>
         <div class="register-form__inner">
@@ -54,4 +45,4 @@
             </form>
         </div>
     </div>
-</body>
+@endsection

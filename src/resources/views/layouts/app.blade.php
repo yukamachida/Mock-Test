@@ -34,3 +34,9 @@
     @endif
     </nav>
 </head>
+
+<body>
+    @yield('content')
+</body>
+
+</html>

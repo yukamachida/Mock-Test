@@ -27,7 +27,7 @@ class ItemController extends Controller
     public function detail($id)
     {
         $product = Product::with(['condition', 'likes', 'comments.user'])->findOrFail($id);
-        dd($product);
+        
         return view('item.detail', compact('product'));
     }
 }

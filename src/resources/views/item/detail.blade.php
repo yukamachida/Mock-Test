@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-<body>
+@section('content')
     <h1>{{ $product->name }}</h1>
 
     <p>￥{{ $product->price }}(税込み)</p>
@@ -11,5 +11,6 @@
 
     <h2>商品の情報</h2>
     <p>カテゴリー</p>
-    <p>商品の状態</p>
-</body>
+    <p>商品の状態{{ $product->condition }}</p>
+
+@endsection
