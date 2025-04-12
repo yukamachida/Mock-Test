@@ -18,6 +18,8 @@ Route::get('/mypage/profile', [ProfileController::class, 'edit']);
 Route::post('/mypage/profile', [ProfileController::class, 'update']);
 Route::get('/mypage', [ItemController::class, 'showMypage']);
 Route::get('/item/{id}', [ItemController::class, 'detail']);
+Route::get('/purchase/{id}', [ItemController::class, 'purchase']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ItemController::class, 'index']);

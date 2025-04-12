@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
-use App\Models\Condition;    
+use App\Models\Condition;
 use App\Models\User;
 use App\Models\Like;
 use App\Models\Comment;
@@ -27,7 +27,14 @@ class ItemController extends Controller
     public function detail($id)
     {
         $product = Product::with(['condition', 'likes', 'comments.user'])->findOrFail($id);
-        
+
         return view('item.detail', compact('product'));
+    }
+
+    public function purchase()
+    {
+        $product = Product::all();
+        $user = auth()->user();
+        return view('purchase', compact('product', 'user'));
     }
 }
