@@ -37,13 +37,6 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function showProfileSetting()
-    {
-        $registeredName = session('registered_name');
-        return view('auth.first_login', compact('registeredName'));
-    }
-
-
     public function register(RegisterRequest $request)
     {
         $user = User::create([
@@ -54,9 +47,19 @@ class AuthController extends Controller
         Auth::login($user); // 登録したユーザーをログイン状態にする
 
         session(['registered_name' => $user->name]);
+
         return redirect('/firstlogin');
     }
 
+    public function showProfileSetting()
+    {
+        $registeredName = session('registered_name');
+
+        return view('auth.first_login', compact('registeredName'));
+    }
+
+
+    
     public function store(AddressRequest $request)
     {
 
