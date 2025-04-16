@@ -2,37 +2,54 @@
 
 @section('content')
     @auth
-        <h1>{{ $product->name }}</h1>
+        <div class="left-content">
+            <img src="{{ asset($product->image) }}" alt="商品画像" class="image-content" />
+        </div>
 
-        <p>￥{{ $product->price }}(税込み)</p>
-        <a href=" /purchase/{{ $product->id }}" class=btn>購入手続きへ</a>
-        <form action="/like" method="post">
-            @csrf
-            <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <div class="right-content">
+            <h1>{{ $product->name }}</h1>
 
-            @php
-                $liked = $product->likes->where('user_id', auth()->id())->first();
-            @endphp
+            <p>￥{{ $product->price }}(税込み)</p>
+            <a href=" /purchase/{{ $product->id }}" class=btn>購入手続きへ</a>
+            <form action="/like" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-            <button type="submit">
-                {{ $liked ? '☆解除' : '☆' }}
-            </button>
-        </form>
+                @php
+                    $liked = $product->likes->where('user_id', auth()->id())->first();
+                @endphp
 
-        <h2>商品説明{{ $product->description }}</h2>
-        <p>カラー:</p>
-
-        <h2>商品の情報</h2>
-        <p>カテゴリー</p>
-        <p>商品の状態{{ $product->condition }}</p>
-
-        <form action="/comment" method="post">
-            @csrf
-            <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <textarea name="content" maxlength="255"></textarea>
-            <button type="submit">コメントを送信する</button>
+                <button type="submit">
+                    {{ $liked ? '☆解除' : '☆' }}
+                </button>
+            </form>
+            <p>いいね{{ $product->likes->count() }}</p>
+            <p>コメント{{ $product->comments->count() }}</p>
 
 
-        </form>
+            <h2>商品説明{{ $product->description }}</h2>
+            <p>カラー:</p>
+
+            <h2>商品の情報</h2>
+            <p>カテゴリー</p>
+            <p>商品の状態{{ $product->condition }}</p>
+            <p>コメント</p>
+            <div>
+                @foreach ($product->comments as $comment)
+                    {{ $comment->user->name }}:{{ $comment->content }}
+                @endforeach
+            </div>
+
+            <p>商品へのコメント</p>
+            <form action="/comment" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <textarea name="content"></textarea>
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+                <button type="submit">コメントを送信する</button>
+            </form>
+        </div>
     @endauth
 @endsection

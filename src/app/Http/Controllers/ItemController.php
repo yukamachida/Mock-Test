@@ -26,7 +26,7 @@ class ItemController extends Controller
 
     public function detail($id)
     {
-        $product = Product::with(['condition', 'likes', 'comments.user'])->findOrFail($id);
+        $product = Product::with(['condition', 'likes.user', 'comments.user'])->findOrFail($id);
 
         return view('item.detail', compact('product'));
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProductController;
 
 Route::get('register/', [AuthController::class, 'showRegisterForm']);
 Route::post('register/', [AuthController::class, 'register']);
@@ -26,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [ItemController::class, 'showMypage']);
     Route::get('/item/{id}', [ItemController::class, 'detail']);
     Route::get('/purchase/{id}', [ItemController::class, 'purchase']);
+    Route::get('/sell', [ProductController::class, 'create']);
 
 });
 
