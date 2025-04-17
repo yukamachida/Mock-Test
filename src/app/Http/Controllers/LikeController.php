@@ -14,7 +14,7 @@ class LikeController extends Controller
             'user_id' => Auth::id(),
             'product_id' => $request->product_id,
         ]);
-        return back();
+        return back(); 
     }
 
     public function destroy($id)

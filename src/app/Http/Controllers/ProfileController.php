@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+    public function showMypage()
+    {
+        return view('profile.show');
+    }
     public function edit(Request $request)
     {
         $user = Auth::user(); // ログイン中のユーザーを取得
@@ -20,8 +24,7 @@ class ProfileController extends Controller
     public function update(AddressRequest $request)
     {
         
-        $user = Auth::user(); // ログイン中のユーザーを取得
-
+        $user = Auth::user(); 
         //データの更新
         $user->name = $request->name;
         $user->postal_code = $request->postal_code;
