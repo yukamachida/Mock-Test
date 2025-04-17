@@ -42,7 +42,7 @@
             <div class="register-form__group">
                 <label class="register-form__label" for="name">ユーザー名</label>
                 <input class="register-form__input" type="text" name="name" id="name"
-                    value="{{  old('name',$registeredName) }}">
+                    value="{{  old('name', $registeredName) }}">
                 <p class="register-form__error-message">
                     @error('name') {{ $message }} @enderror
                 </p>
