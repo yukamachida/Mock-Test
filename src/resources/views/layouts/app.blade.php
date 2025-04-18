@@ -10,28 +10,28 @@
             <img src="/images/logo.svg" alt="COACHTECH">
         </a>
     </h1>
-    @if (Auth::check())
-        <form action="/search" method="get" class="search-form">
-            @csrf
-            <input class="" type="text" value="なにをお探しですか?">
-        </form>
-        <nav>
+    {{-- @if (Auth::check()) --}}
+    <form action="/search" method="get" class="search-form">
+        @csrf
+        <input class="" type="text" value="なにをお探しですか?">
+    </form>
+    <nav>
 
-            <ul class="header-nav">
-                <li class="header-nav__item">
-                    <form action="/logout" method="post">
-                        @csrf
-                        <button class="header-nav__button">ログアウト</button>
-                    </form>
-                </li>
-                <li class="header-nav__item">
-                    <a class="header-nav__link" href="/mypage">マイページ</a>
-                </li>
-                <li class="header-nav__item">
-                    <a href="/sell">出品</a>
-                </li>
-            </ul>
-    @endif
+        <ul class="header-nav">
+            <li class="header-nav__item">
+                <form action="/logout" method="post">
+                    @csrf
+                    <button class="header-nav__button">ログアウト</button>
+                </form>
+            </li>
+            <li class="header-nav__item">
+                <a class="header-nav__link" href="/mypage">マイページ</a>
+            </li>
+            <li class="header-nav__item">
+                <a href="/sell">出品</a>
+            </li>
+        </ul>
+        {{-- @endif --}}
     </nav>
 </head>
 

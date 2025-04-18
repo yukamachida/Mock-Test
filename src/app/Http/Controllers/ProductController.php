@@ -36,9 +36,27 @@ class ProductController extends Controller
 
     public function store(ExhibitionRequest $request)
     {
+        $product = new Product();
+        $product->user_id = auth()->id();
+        $product->name = $request->name;
+        $product->brand = $request->brand;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->condition_id = $request->condition_id;
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/image');
+            $product->image = basename($path);
+        }
+        $product->save();
+
+        //カテゴリー保存
+        $product->categories()->attach($request->categories);
+
+        return redirect('/');
 
     }
-    
+
     //商品詳細
     public function detail($id)
     {
