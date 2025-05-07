@@ -34,4 +34,15 @@ class ProfileController extends Controller
         $user->save();
         return redirect('/mypage/profile');
     }
+
+    public function change(Request $request)
+    {
+        $user = Auth::user();
+        return view('profile.change', compact('user'));
+    }
+
+    public function changeAddress(AddressRequest $request)
+    {
+        
+    }
 }

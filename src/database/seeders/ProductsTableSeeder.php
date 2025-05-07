@@ -19,7 +19,7 @@ class ProductsTableSeeder extends Seeder
                 'price' => '15000',
                 'description' => 'スタイリッシュなデザインのメンズ腕時計',
                 'image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
-
+                'user_id' => 1,
             ],
             [
                 'name' => 'HDD',

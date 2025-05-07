@@ -17,19 +17,20 @@ Route::get('/item/{id}', [ProductController::class, 'detail']);
 
 
 Route::middleware('auth')->group(function () {
-    
-    Route::post('/like', [LikeController::class, 'store']);
-    Route::delete('/like/{id}', [LikeController::class, 'destroy']);
+
+   
     Route::post('/comment', [CommentController::class, 'store']);
     Route::get('/firstlogin', [AuthController::class, 'showProfileSetting']);
     Route::post('/firstlogin', [AuthController::class, 'store']);
     Route::get('/mypage/profile', [ProfileController::class, 'edit']);
     Route::post('/mypage/profile', [ProfileController::class, 'update']);
     Route::get('/mypage', [ProfileController::class, 'showMypage']);
-    
-    Route::get('/purchase/{id}', [ProductController::class, 'purchase']);
+
+    Route::get('/purchase/{id}', [ProductController::class, 'purchaseForm']);
+    Route::post('/purchase/{id}', [ProductController::class, 'purchase']);
     Route::get('/sell', [ProductController::class, 'create']);
     Route::post('/sell', [ProductController::class, 'store']);
-
+    Route::get('/change', [ProfileController::class, 'change']);
+    Route::post('/change/address', [ProfileController::class, 'changeAddress']);
 });
 

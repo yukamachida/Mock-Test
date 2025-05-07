@@ -11,16 +11,15 @@
 
         <p>￥{{ $product->price }}(税込み)</p>
         <a href=" /purchase/{{ $product->id }}" class=btn>購入手続きへ</a>
-        <form action="/like" method="post">
+        <form action="/product/{{ $product->id }}/like" method="post">
             @csrf
-            <input type="hidden" name="product_id" value="{{ $product->id }}">
-
-            @php
-                $liked = $product->likes->where('user_id', auth()->id())->first();
-            @endphp
-
             <button type="submit">
-                {{ $liked ? '☆解除' : '☆' }}
+                @if (auth()->user() && auth()->user()->likeProducts->contains($product->id))
+                    <span style="color:red;">♥</span>
+                @else
+                    <span style="coler:glay;">♡</span>
+                @endif
+
             </button>
         </form>
         <p>いいね{{ $product->likes->count() }}</p>

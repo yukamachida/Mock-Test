@@ -49,7 +49,7 @@ class ProductController extends Controller
             $product->image = basename($path);
         }
         $product->save();
-
+        dd($product);
         //カテゴリー保存
         $product->categories()->attach($request->categories);
 
@@ -60,16 +60,17 @@ class ProductController extends Controller
     //商品詳細
     public function detail($id)
     {
+        
         $product = Product::with(['condition', 'likes.user', 'comments.user'])->findOrFail($id);
 
         return view('item.detail', compact('product'));
     }
 
     //購入
-    public function purchase()
+    public function purchaseForm($id)
     {
-        $product = Product::all();
+        $product = Product::findOrFail($id);
         $user = auth()->user();
-        return view('purchase', compact('product', 'user'));
+        return view('item.purchase', compact('product', 'user'));
     }
 }
