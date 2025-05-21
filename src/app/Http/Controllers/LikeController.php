@@ -12,10 +12,11 @@ class LikeController extends Controller
     
     public function like(Product $product)
     {
-
+        dd('テスト');
         $user = auth()->user();
        
         if ($user->likeProducts->contains($product->id)) {
+            
             $user->likeProducts()->detach($product->id); // すでにいいねしていたら解除
         } else {
             $user->likeProducts()->attach($product->id); // いいねしてなければ追加

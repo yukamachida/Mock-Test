@@ -29,10 +29,10 @@ class ExhibitionRequest extends FormRequest
             'condition_id' => 'required|exists:conditions,id',
             'name' => 'required|string',
             'brand' => 'nullable|string',
-            'description' => 'required|string|max:225',
+            'description' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
 
-            'images' => 'required|image|mimes:jpeg,png'
+            'images' => 'nullable|image|mimes:jpeg,png'
 
         ];
     }
@@ -42,8 +42,8 @@ class ExhibitionRequest extends FormRequest
         return [
             'name.required' => '入力必須',
             'description.required' => '入力必須',
-            'description.max' => '225字以内で入力してください',
-            'images.required' => 'アップロード必須',
+            'description.max' => '255字以内で入力してください',
+            //'images.required' => 'アップロード必須',
             'images.mimes' => '拡張子はjpegもしくはpng形式でアップロードしてください',
             'categories.required' => '選択必須',
             'condition_id.required' => '選択必須',

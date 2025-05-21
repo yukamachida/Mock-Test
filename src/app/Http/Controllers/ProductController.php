@@ -49,7 +49,7 @@ class ProductController extends Controller
             $product->image = basename($path);
         }
         $product->save();
-        dd($product);
+        
         //カテゴリー保存
         $product->categories()->attach($request->categories);
 

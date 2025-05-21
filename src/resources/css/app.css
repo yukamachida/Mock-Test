@@ -1,0 +1,14 @@
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .box {
+        width: 1200px;
+        font-size: 18px;
+    }
+}
+
+/* タブレット用（768px〜850px） */
+@media (min-width: 768px) and (max-width: 850px) {
+    .box {
+        width: 90%;
+        font-size: 16px;
+    }
+}
