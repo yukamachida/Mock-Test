@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>住所の変更</h1>
-    <form action="/change/address" method="post" class="update-form__form">
+    <form action="/purchase/address/{{ $product->id ?? '' }}" method="post" class="update-form__form">
         @csrf
         <div class="update-form__group">
             <label class="update-form__label" for="postal_code">郵便番号</label>

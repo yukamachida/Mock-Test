@@ -35,7 +35,7 @@
     @else
         <form action="/search" method="get" class="search-form">
             @csrf
-            <input class="" type="text" value="なにをお探しですか?">
+            <input type="text"  name="keyword" value="{{ request('keyword') }}" placeholder="なにをお探しですか?">
         </form>
         <nav>
             <ul class="header-nav">

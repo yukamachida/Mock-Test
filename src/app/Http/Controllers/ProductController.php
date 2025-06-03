@@ -19,9 +19,15 @@ class ProductController extends Controller
     //一覧
     public function index()
     {
-
-        $products = Product::all();
         $user = auth()->user();
+
+        if($user)
+        {
+            $products = Product::with('purchase')->
+            where('user_id', '!=', $user->id)->get();
+        } else {
+            $products = Product::all();
+        }
         return view('index', compact('products', 'user'));
     }
 

@@ -43,6 +43,14 @@ class Product extends Model
           return $this->belongsToMany(Category::class);
      }
 
+     public function purchase() 
+     {
+          return $this->hasOne(Purchase::class);
+     }
 
+     public function getIsSoldAttribute()
+     {
+          return $this->purchase !== null;
+     }
 
 }

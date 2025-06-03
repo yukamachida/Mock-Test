@@ -54,7 +54,7 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->hasMany(Like::class);
-    } 
+    }
 
     public function comments()
     {
@@ -65,6 +65,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Product::class, 'likes')->withTimestamps();
     }
-        
-    
+
+    public function Purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
+
 }
