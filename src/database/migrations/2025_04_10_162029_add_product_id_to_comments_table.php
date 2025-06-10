@@ -13,9 +13,11 @@ class AddProductIdToCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-        });
+        if (!Schema::hasColumn('comments', 'product_id')) {
+            Schema::table('comments', function (Blueprint $table) {
+                $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            });
+        }
     }
 
     /**
