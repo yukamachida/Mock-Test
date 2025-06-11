@@ -4,16 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="css/app.css">
     <title>新フリマ</title>
-    <h1>
-        <a href="/">
-            <img src="/images/logo.svg" alt="COACHTECH">
-        </a>
-    </h1>
 </head>
 
 <body>
+
+    <head>
+        <link href="css/app.css" rel="stylesheet">
+        <div class="auth-header">
+            <h1>
+                <a href="/">
+                    <img src="/images/logo.svg" alt="COACHTECH">
+                </a>
+            </h1>
+        </div>
+    </head>
+
+
+    <link href="css/login.css" rel="stylesheet">
     <div class="login-form">
         <h2 class="login-form__heading content__heading">ログイン</h2>
         <div class="login-form__inner">
