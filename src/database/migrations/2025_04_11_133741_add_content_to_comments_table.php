@@ -14,7 +14,7 @@ class AddContentToCommentsTable extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
-            $table->string('content', 255)->nullable();
+            // $table->string('content', 255)->nullable();
         });
     }
 

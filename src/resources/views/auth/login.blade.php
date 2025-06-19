@@ -11,7 +11,7 @@
 <body>
 
     <head>
-        <link href="css/app.css" rel="stylesheet">
+        <link href="../css/app.css" rel="stylesheet">
         <div class="auth-header">
             <h1>
                 <a href="/">
@@ -22,7 +22,7 @@
     </head>
 
 
-    <link href="css/login.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet">
     <div class="login-form">
         <h2 class="login-form__heading content__heading">ログイン</h2>
         <div class="login-form__inner">
